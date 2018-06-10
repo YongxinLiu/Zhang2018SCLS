@@ -31,17 +31,6 @@ if (TRUE){
 }else{
 	sub_design = design
 }
-# if (TRUE){
-# 	sub_design = subset(sub_design,site %in% c("Cp","Sz") ) # select group2
-# }
-# 
-# # Set group style, single or combine
-# if (FALSE){
-# 	sub_design$group=paste(sub_design$groupID,sub_design$site,sep = "")
-# }else{
-# 	sub_design$group=sub_design$groupID
-# }
-
 
 print(paste("Number of group: ",length(unique(sub_design$group)),sep="")) # show group numbers
 
@@ -59,7 +48,6 @@ points = as.data.frame(pcoa$points) # get coordinate string, format to dataframm
 colnames(points) = c("x", "y", "z","a") 
 eig = pcoa$eig
 points = cbind(points, sub_design[match(rownames(points), rownames(sub_design)), ])
-#points$group = factor(points$group, levels=colors$group)
 
 # plot PCo 1 and 2
 p = ggplot(points, aes(x=x, y=y, color=day, shape = compartment))
@@ -69,7 +57,7 @@ p = p + geom_point(alpha=.7, size=2) +
        title="bray_curtis PCoA") + main_theme
 
 p
-ggsave("beta_pcoa_day_bray_curtis_default.pdf", q, width = 4, height = 2.5)
+ggsave("beta_pcoa_day_bray_curtis_default.pdf", p, width = 4, height = 2.5)
 
 # scale_color_gradientn 按多种颜色连续着色，如彩虹色
 # topo.colors(), rainbow(), heat.colors(), terrain.colors(), cm.colors(), RColorBrewer::brewer.pal()
