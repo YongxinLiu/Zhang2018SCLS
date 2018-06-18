@@ -7,7 +7,7 @@ if (FALSE){
 	install_github("vqv/ggbiplot")
 }
 
-## Basic plotting stuff
+## 加载包以及图形设置
 # Set working enviroment in Rstudio, select Session - Set working directory - To source file location, default is runing directory
 rm(list=ls()) # clean enviroment object
 library("ggplot2") # load related packages
